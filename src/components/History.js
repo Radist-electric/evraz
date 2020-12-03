@@ -1,5 +1,6 @@
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
@@ -14,7 +15,9 @@ export default function History() {
   return (
     <Container maxWidth="lg" className={classes.root}>
       <Grid container alignItems="center">
-        <h1>История</h1>
+        <Typography variant="h1" component="h2">
+          История
+        </Typography>
       </Grid>
     </Container>
   )

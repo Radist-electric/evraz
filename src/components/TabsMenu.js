@@ -76,10 +76,10 @@ export default function TabsMenu() {
       <AppBar position="static" className={classes.appBar}>
         <Container maxWidth="lg">
           <Grid container alignItems="center">
-            <Grid item md={2} sm={3} xl={4} xs={12}>
+            <Grid item md={2} sm={3} xs={12}>
               <img className={classes.logo} src={Logo} alt="logo"></img>
             </Grid>
-            <Grid item md={10} sm={9} xl={8} xs={12}>
+            <Grid item md={10} sm={9} xs={12}>
               <Tabs
                 value={value}
                 onChange={handleChange}
