@@ -11,6 +11,7 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
+import Clock from './Clock'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -236,7 +237,7 @@ export default function Sections() {
         <Table className={classes.table} aria-label="Sections table footer">
           <TableBody>
             <TableRow className={classes.outRow}>
-              <TableCell className={[classes.smallCell, classes.fontBlack].join(' ')}>10:15</TableCell>
+              <TableCell className={[classes.smallCell, classes.fontBlack].join(' ')}><Clock/></TableCell>
               <TableCell align="left" className={classes.fontBlack}>Рекомендация обновлена</TableCell>
               <TableCell></TableCell>
               <TableCell align="right" className={classes.fontBlack}>Посмотреть историю</TableCell>
