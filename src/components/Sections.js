@@ -62,7 +62,7 @@ function createData1(sections, poor, rich, col_1, col_2, col_3, col_4, col_5, co
 function createData2(sections, poor, rich, col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10) {
   return { sections, poor, rich, col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10 };
 }
-function createStyle1(data) {
+function createStyle(data) {
   let arr = []
   for (let i = 0; i < data.length; i++) {
     let obj = {}
@@ -119,13 +119,19 @@ const rows1 = [
  * Линия: 0 - без линий, 1 - верхняя красная, 2 - нижняя зелёная
  */
 const styles1 = [
-  createStyle1(['000', '000', '100', '000', '000', '100', '100', '000', '000', '100', '220', '000', '000', '000', '000', '000', '000', '000']),
-  createStyle1(['000', '000', '100', '000', '000', '100', '100', '000', '000', '100', '010', '000', '000', '000', '000', '000', '000', '000']),
-  createStyle1(['000', '000', '100', '000', '000', '120', '100', '000', '000', '220', '000', '000', '000', '000', '000', '000', '000', '000']),
-  createStyle1(['000', '000', '100', '000', '000', '110', '100', '000', '000', '110', '000', '000', '000', '000', '000', '000', '000', '000']),
-  createStyle1(['000', '221', '100', '221', '000', '100', '100', '000', '000', '100', '000', '000', '000', '000', '000', '000', '000', '000']),
-  createStyle1(['000', '012', '100', '012', '000', '100', '100', '000', '000', '100', '000', '000', '000', '000', '000', '000', '000', '000'])
+  createStyle(['000', '000', '100', '000', '000', '100', '100', '000', '000', '100', '220', '000', '000', '000', '000', '000', '000', '000']),
+  createStyle(['000', '000', '100', '000', '000', '100', '100', '000', '000', '100', '010', '000', '000', '000', '000', '000', '000', '000']),
+  createStyle(['000', '000', '100', '000', '000', '120', '100', '000', '000', '220', '000', '000', '000', '000', '000', '000', '000', '000']),
+  createStyle(['000', '000', '100', '000', '000', '110', '100', '000', '000', '110', '000', '000', '000', '000', '000', '000', '000', '000']),
+  createStyle(['000', '221', '100', '221', '000', '100', '100', '000', '000', '100', '000', '000', '000', '000', '000', '000', '000', '000']),
+  createStyle(['000', '012', '100', '012', '000', '100', '100', '000', '000', '100', '000', '000', '000', '000', '000', '000', '000', '000'])
 ]
+const styles2 = [
+  createStyle(['000', '000', '000', '000', '221', '000', '000', '000', '000', '000', '000', '000', '000']),
+  createStyle(['000', '000', '000', '000', '002', '000', '000', '000', '000', '000', '000', '000', '000'])
+
+]
+console.log(styles2)
 
 const rows2 = [
   createData2('Доп режимы', '', '', 'Насос 802', 'Да', '', 'Насос 163', 'Нет', '', 'Насос 13', 'Нет', '', 'Насос 105'),
@@ -196,37 +202,42 @@ export default function Sections() {
             ))}
             {rows2.map((row, i) => (
               <TableRow key={i} className={i % 2 === 0 ? classes.rowBottom : classes.rowTop}>
-                <TableCell component="th" scope="row" className={i % 2 === 0 ? classes.fontBlack : ''}>
+                <TableCell component="th" scope="row" className={i % 2 === 0 ? classes.fontBlack : ''}
+                                          style={styles2[i][0] === 0 ? null : styles1[i][0]}>
                   {row.sections}
                 </TableCell>
-                <TableCell align="center">{row.poor}</TableCell>
-                <TableCell align="center">{row.rich}</TableCell>
-                {i === 0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')} align="center">{row.col_1}</TableCell>}
-                <TableCell align="center">{row.col_2}</TableCell>
-                <TableCell align="center">{row.col_3}</TableCell>
-                {i === 0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')} align="center">{row.col_4}</TableCell>}
-                <TableCell align="center">{row.col_5}</TableCell>
-                <TableCell align="center">{row.col_6}</TableCell>
-                {i === 0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')}>{row.col_7}</TableCell>}
-                <TableCell align="center">{row.col_8}</TableCell>
-                <TableCell align="center">{row.col_9}</TableCell>
-                {i === 0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')} align="center">{row.col_10}</TableCell>}
+                <TableCell align="center" style={styles2[i][1] === 0 ? null : styles2[i][1]}>{row.poor}</TableCell>
+                <TableCell align="center" style={styles2[i][2] === 0 ? null : styles2[i][2]}>{row.rich}</TableCell>
+                {i === 0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')} align="center"
+                                          style={styles2[i][3] === 0 ? null : styles2[i][3]}>{row.col_1}</TableCell>}
+                <TableCell align="center" style={styles2[i][4] === 0 ? null : styles2[i][4]}>{row.col_2}</TableCell>
+                <TableCell align="center" style={styles2[i][5] === 0 ? null : styles2[i][5]}>{row.col_3}</TableCell>
+                {i === 0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')} align="center"
+                                          style={styles2[i][6] === 0 ? null : styles2[i][6]}>{row.col_4}</TableCell>}
+                <TableCell align="center" style={styles2[i][7] === 0 ? null : styles2[i][7]}>{row.col_5}</TableCell>
+                <TableCell align="center" style={styles2[i][8] === 0 ? null : styles2[i][8]}>{row.col_6}</TableCell>
+                {i === 0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')}
+                                          style={styles2[i][9] === 0 ? null : styles2[i][9]}>{row.col_7}</TableCell>}
+                <TableCell align="center" style={styles2[i][10] === 0 ? null : styles2[i][10]}>{row.col_8}</TableCell>
+                <TableCell align="center" style={styles2[i][11] === 0 ? null : styles2[i][11]}>{row.col_9}</TableCell>
+                {i === 0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')} align="center"
+                                          style={styles2[i][12] === 0 ? null : styles2[i][12]}>{row.col_10}</TableCell>}
                 {i === 0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.selectCell].join(' ')} align="center">
                   <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-outlined-label">Насос</InputLabel>
+                    <InputLabel id="select-outlined-label">Насос</InputLabel>
                     <Select
-                      labelId="demo-simple-select-outlined-label"
-                      id="demo-simple-select-outlined"
+                      labelId="select-outlined-label"
+                      id="select-outlined"
                       value={pump}
                       onChange={handleChange}
                       label="Насос"
                     >
                       <MenuItem value="">
-                        <em>None</em>
+                        <em>Нет</em>
                       </MenuItem>
-                      <MenuItem value={10}>на 3-97</MenuItem>
-                      <MenuItem value={20}>на 3-98</MenuItem>
-                      <MenuItem value={30}>на 3-99</MenuItem>
+                      <MenuItem value={1}>на 3-97</MenuItem>
+                      <MenuItem value={2}>на 3-98</MenuItem>
+                      <MenuItem value={3}>на 3-99</MenuItem>
                     </Select>
                   </FormControl>
                 </TableCell>}
