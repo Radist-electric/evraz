@@ -22,6 +22,43 @@ function App() {
         root: {
           height: '40px'
         }
+      },
+      MuiSelect: {
+        root: {
+          padding: '0'
+        },
+        icon: {
+          top: '50%',
+          transform: 'translateY(-50%)'
+        },
+        iconOutlined: {
+          right: 0
+        },
+        selectMenu: {
+          paddingTop: '7px',
+          paddingBottom: '7px',
+          paddingLeft: '7px'
+        }
+      },
+      MuiSvgIcon: {
+        root: {
+          fontSize: '1rem'
+        }
+      },
+      MuiFormLabel: {
+        root: {
+          fontSize: '12px'
+        }
+      },
+      MuiInputLabel: {
+        outlined: {
+          transform: 'translate(6px, 9px) scale(1)'
+        }
+      },
+      MuiInputBase: {
+        root: {
+          fontSize: '0.8em'
+        }
       }
     }
   })

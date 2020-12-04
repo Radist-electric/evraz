@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -7,6 +7,10 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -18,6 +22,9 @@ const useStyles = makeStyles(() => ({
   },
   smallCell: {
     width: '40px'
+  },
+  selectCell: {
+    padding: '0'
   },
   fontBlack: {
     fontWeight: 700
@@ -33,14 +40,17 @@ const useStyles = makeStyles(() => ({
   },
   rowTop: {
     verticalAlign: "top"
+  },
+  rowCenter: {
+    verticalAlign: "middle"
   }
 }))
 
 function createData1(sections, poor, rich, col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10, col_11, col_12, col_13, col_14, col_15) {
   return { sections, poor, rich, col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10, col_11, col_12, col_13, col_14, col_15 };
 }
-function createData2(sections, poor, rich, col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10, col_11) {
-  return { sections, poor, rich, col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10, col_11 };
+function createData2(sections, poor, rich, col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10) {
+  return { sections, poor, rich, col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10 };
 }
 
 const rows1 = [
@@ -52,12 +62,17 @@ const rows1 = [
   createData1('рекомендация', 6, 1, 'Нет', '', 'Да', '', 'Да', '', 'Да', '', 'Да', '', 'Да', '', 'Да', '', 'Да')
 ];
 const rows2 = [
-  createData2('Доп режимы', '', '', 'Насос 802', 'Да', '', 'Насос 163', 'Нет', '', 'Насос 13', 'Нет', '', 'Насос 105'),
-  createData2('рекомендация', '', '', '', 'Нет', '', '', 'Нет', '', '', 'Нет', '', ''),
+  createData2('Доп режимы',   '', '', 'Насос 802', 'Да', '', 'Насос 163', 'Нет', '', 'Насос 13', 'Нет', '', 'Насос 105'),
+  createData2('рекомендация', '', '',    '',      'Нет', '',     '',      'Нет', '',     '',     'Нет', '',     ''     ),
 ];
 
 export default function Sections() {
   const classes = useStyles()
+  const [pump, setPump] = useState('')
+
+  const handleChange = (event) => {
+    setPump(event.target.value);
+  }
 
   return (
     <div className={classes.root}>
@@ -66,52 +81,51 @@ export default function Sections() {
           <TableHead className={classes.outRow}>
             <TableRow>
               <TableCell>Секции</TableCell>
-              <TableCell>Бедный</TableCell>
-              <TableCell>Богатый</TableCell>
-              <TableCell>1</TableCell>
-              <TableCell>2</TableCell>
-              <TableCell>3</TableCell>
-              <TableCell>4</TableCell>
-              <TableCell>5</TableCell>
-              <TableCell>6</TableCell>
-              <TableCell>7</TableCell>
-              <TableCell>8</TableCell>
-              <TableCell>9</TableCell>
-              <TableCell>10</TableCell>
-              <TableCell>11</TableCell>
-              <TableCell>12</TableCell>
-              <TableCell>13</TableCell>
-              <TableCell>14</TableCell>
-              <TableCell>15</TableCell>
+              <TableCell align="center">Бедный</TableCell>
+              <TableCell align="center">Богатый</TableCell>
+              <TableCell align="center">1</TableCell>
+              <TableCell align="center">2</TableCell>
+              <TableCell align="center">3</TableCell>
+              <TableCell align="center">4</TableCell>
+              <TableCell align="center">5</TableCell>
+              <TableCell align="center">6</TableCell>
+              <TableCell align="center">7</TableCell>
+              <TableCell align="center">8</TableCell>
+              <TableCell align="center">9</TableCell>
+              <TableCell align="center">10</TableCell>
+              <TableCell align="center">11</TableCell>
+              <TableCell align="center">12</TableCell>
+              <TableCell align="center">13</TableCell>
+              <TableCell align="center">14</TableCell>
+              <TableCell align="center">15</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows1.map((row, i) => (
-              // <TableRow key={i} className={i % 2 === 0 ? classes.rowBottom : classes.rowTop} className={classes.markedRow}>
               <TableRow key={i} className={[
-                i % 2 === 0 ? classes.rowBottom : classes.rowTop,
-                i === 0 || i % 4 === 0 || (i - 1) % 4 === 0 ? classes.markedRow : ''
+                i % 2 === 0 ? classes.rowBottom : classes.rowTop, // у нечётных прижимает текст к низу, у чётных - к верху
+                i === 0 || i % 4 === 0 || (i - 1) % 4 === 0 ? classes.markedRow : '' // каждый четвёртый и следующий за них закрашиваем
               ].join(' ')}>
                 <TableCell component="th" scope="row" className={i % 2 === 0 ? classes.fontBlack : ''}>
                   {row.sections}
                 </TableCell>
-                <TableCell>{row.poor}</TableCell>
-                <TableCell>{row.rich}</TableCell>
-                <TableCell>{row.col_1}</TableCell>
-                <TableCell>{row.col_2}</TableCell>
-                <TableCell>{row.col_3}</TableCell>
-                <TableCell>{row.col_4}</TableCell>
-                <TableCell>{row.col_5}</TableCell>
-                <TableCell>{row.col_6}</TableCell>
-                <TableCell>{row.col_7}</TableCell>
-                <TableCell>{row.col_8}</TableCell>
-                <TableCell>{row.col_9}</TableCell>
-                <TableCell>{row.col_10}</TableCell>
-                <TableCell>{row.col_11}</TableCell>
-                <TableCell>{row.col_12}</TableCell>
-                <TableCell>{row.col_13}</TableCell>
-                <TableCell>{row.col_14}</TableCell>
-                <TableCell>{row.col_15}</TableCell>
+                <TableCell align="center">{row.poor}</TableCell>
+                <TableCell align="center">{row.rich}</TableCell>
+                <TableCell align="center">{row.col_1}</TableCell>
+                <TableCell align="center">{row.col_2}</TableCell>
+                <TableCell align="center">{row.col_3}</TableCell>
+                <TableCell align="center">{row.col_4}</TableCell>
+                <TableCell align="center">{row.col_5}</TableCell>
+                <TableCell align="center">{row.col_6}</TableCell>
+                <TableCell align="center">{row.col_7}</TableCell>
+                <TableCell align="center">{row.col_8}</TableCell>
+                <TableCell align="center">{row.col_9}</TableCell>
+                <TableCell align="center">{row.col_10}</TableCell>
+                <TableCell align="center">{row.col_11}</TableCell>
+                <TableCell align="center">{row.col_12}</TableCell>
+                <TableCell align="center">{row.col_13}</TableCell>
+                <TableCell align="center">{row.col_14}</TableCell>
+                <TableCell align="center">{row.col_15}</TableCell>
               </TableRow>
             ))}
             {rows2.map((row, i) => (
@@ -119,19 +133,37 @@ export default function Sections() {
                 <TableCell component="th" scope="row" className={i % 2 === 0 ? classes.fontBlack : ''}>
                   {row.sections}
                 </TableCell>
-                <TableCell>{row.poor}</TableCell>
-                <TableCell>{row.rich}</TableCell>
-                <TableCell colSpan={2}>{row.col_1}</TableCell>
-                <TableCell>{row.col_2}</TableCell>
-                <TableCell>{row.col_3}</TableCell>
-                <TableCell colSpan={2}>{row.col_4}</TableCell>
-                <TableCell>{row.col_5}</TableCell>
-                <TableCell>{row.col_6}</TableCell>
-                <TableCell colSpan={2}>{row.col_7}</TableCell>
-                <TableCell>{row.col_8}</TableCell>
-                <TableCell>{row.col_9}</TableCell>
-                <TableCell colSpan={2}>{row.col_10}</TableCell>
-                <TableCell padding="none">на 3-97</TableCell>
+                <TableCell align="center">{row.poor}</TableCell>
+                <TableCell align="center">{row.rich}</TableCell>
+                {i===0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')} align="center">{row.col_1}</TableCell>}
+                <TableCell align="center">{row.col_2}</TableCell>
+                <TableCell align="center">{row.col_3}</TableCell>
+                {i===0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')} align="center">{row.col_4}</TableCell>}
+                <TableCell align="center">{row.col_5}</TableCell>
+                <TableCell align="center">{row.col_6}</TableCell>
+                {i===0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')}>{row.col_7}</TableCell>}
+                <TableCell align="center">{row.col_8}</TableCell>
+                <TableCell align="center">{row.col_9}</TableCell>
+                {i===0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.fontBlack].join(' ')} align="center">{row.col_10}</TableCell>}
+                {i===0 && <TableCell colSpan={2} rowSpan={2} className={[classes.rowCenter, classes.selectCell].join(' ')} align="center">
+                  <FormControl variant="outlined" className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-outlined-label">Насос</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-outlined-label"
+                      id="demo-simple-select-outlined"
+                      value={pump}
+                      onChange={handleChange}
+                      label="Насос"
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={10}>на 3-97</MenuItem>
+                      <MenuItem value={20}>на 3-98</MenuItem>
+                      <MenuItem value={30}>на 3-99</MenuItem>
+                    </Select>
+                  </FormControl>
+                </TableCell>}
               </TableRow>
             ))}
           </TableBody>
