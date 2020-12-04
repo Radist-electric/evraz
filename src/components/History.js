@@ -15,7 +15,7 @@ export default function History() {
   return (
     <Container maxWidth="lg" className={classes.root}>
       <Grid container alignItems="center">
-        <Typography variant="h1" component="h2">
+        <Typography variant="h2" component="h1">
           История
         </Typography>
       </Grid>

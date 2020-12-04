@@ -8,6 +8,13 @@ function App() {
       "fontFamily": `Rubik, sans-serif`
     },
     overrides: {
+      MuiCssBaseline: {
+        '@global': {
+          body: {
+            backgroundColor: '#e5e7ec',
+          },
+        },
+      },
       MuiTableCell: {
         root: {
           padding: '2px 10px',
