@@ -16,6 +16,10 @@ function App() {
         },
         head: {
           fontWeight: 700
+        },
+        body: {
+          fontWeight: 500,
+          color: 'rgba(0,0,0,0.5)'
         }
       },
       MuiTableRow: {
