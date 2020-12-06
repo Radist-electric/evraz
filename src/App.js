@@ -70,6 +70,17 @@ function App() {
         root: {
           fontSize: '0.8em'
         }
+      },
+      MuiLinearProgress: {
+        root: {
+          height: '3px',
+        },
+        colorPrimary: {
+          backgroundColor: 'rgba(0,0,0,0.2)'
+        },
+        barColorPrimary: {
+          backgroundColor: 'rgba(0,0,0,0.5)'
+        }
       }
     }
   })

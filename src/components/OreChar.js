@@ -19,12 +19,18 @@ const useStyles = makeStyles(() => ({
   title: {
     fontWeight: 700
   },
-  tableHead: {
+  headRow: {
+    height: '28px',
+    borderBottom: '1px solid #000'
+  },
+  headCell: {
     fontWeight: 400,
-    fontSize: '12px'
+    fontSize: '11px',
+    color: 'rgba(0,0,0,0.5)'
   },
   tableRow: {
-    height: '28px'
+    height: '28px',
+    borderBottom: '1px solid rgba(0,0,0,0.1)'
   },
   listButton: {
     paddingBottom: '10px',
@@ -78,10 +84,10 @@ export default function OreChar() {
           <TableContainer>
             <Table>
               <TableHead>
-                <TableRow>
+                <TableRow className={classes.headRow}>
                   <TableCell></TableCell>
-                  <TableCell className={classes.tableHead}>Текущее</TableCell>
-                  <TableCell className={classes.tableHead}>Через 1 час</TableCell>
+                  <TableCell className={classes.headCell}>текущее</TableCell>
+                  <TableCell className={classes.headCell}>через 1 час</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
