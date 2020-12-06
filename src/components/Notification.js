@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(() => ({
   root: {
     height: '130px',
-    padding: '10px 15px',
+    padding: '12px 12px',
     backgroundColor: '#ffffff',
     borderRadius: '5px'
   },
@@ -23,7 +23,6 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     height: '22px',
     width: '22px',
-    // border: 'none',
     borderRadius: '50%',
     backgroundColor: '#e03049',
     color: '#ffffff',

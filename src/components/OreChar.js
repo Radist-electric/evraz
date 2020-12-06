@@ -12,7 +12,7 @@ import TableFooter from '@material-ui/core/TableFooter'
 const useStyles = makeStyles(() => ({
   root: {
     height: '280px',
-    padding: '10px 15px',
+    padding: '12px 12px',
     backgroundColor: '#ffffff',
     borderRadius: '5px'
   },
@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
     borderBottom: '1px solid #000'
   },
   headCell: {
-    fontWeight: 400,
+    fontWeight: 500,
     fontSize: '11px',
     color: 'rgba(0,0,0,0.5)'
   },
@@ -46,27 +46,27 @@ const useStyles = makeStyles(() => ({
 const characteristics = [
   {
     name: 'ПО',
-    data: ['63,97', '64,23']
+    data: [63.97, 64.23]
   },
   {
     name: 'Г',
-    data: ['20', '20']
+    data: [20, 20]
   },
   {
     name: 'Ю',
-    data: ['10', '15']
+    data: [10, 15]
   },
   {
     name: 'З',
-    data: ['25', '35']
+    data: [25, 35]
   },
   {
     name: 'С',
-    data: ['40', '25']
+    data: [40, 25]
   },
   {
     name: 'Э 48',
-    data: ['5', '5']
+    data: [5, 5]
   },
 ]
 
@@ -95,7 +95,7 @@ export default function OreChar() {
                   <TableRow key={i} className={classes.tableRow}>
                     <TableCell>{row.name}</TableCell>
                     {row.data.map((elem, i) => (
-                      <TableCell key={i}>{elem}</TableCell>
+                      <TableCell key={i}>{elem.toString().split('.').join(',')}</TableCell>
                     ))}
                   </TableRow>
                 ))}

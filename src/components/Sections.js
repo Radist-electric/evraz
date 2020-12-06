@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
     width: '40px'
   },
   selectCell: {
-    padding: '0'
+    padding: '0 10px 0 0'
   },
   fontBlack: {
     fontWeight: 700,
