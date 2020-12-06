@@ -24,9 +24,12 @@ class Clock extends Component {
   }
 
   render() {
+    const hours = this.state.date.getHours()
+    const minutes = this.state.date.getMinutes()
+
     return (
       <>
-        {this.state.date.getHours()}:{this.state.date.getMinutes()}
+        {hours < 10 ? '0' : ''}{hours}:{minutes < 10 ? '0' : ''}{minutes}
       </>
     )
   }

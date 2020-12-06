@@ -12,7 +12,7 @@ import TableFooter from '@material-ui/core/TableFooter'
 const useStyles = makeStyles(() => ({
   root: {
     height: '280px',
-    padding: '10px',
+    padding: '10px 15px',
     backgroundColor: '#ffffff',
     borderRadius: '5px'
   },

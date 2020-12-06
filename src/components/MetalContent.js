@@ -10,7 +10,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 const useStyles = makeStyles(() => ({
   root: {
     height: '280px',
-    padding: '10px',
+    padding: '10px 15px',
     backgroundColor: '#ffffff',
     borderRadius: '5px'
   },
