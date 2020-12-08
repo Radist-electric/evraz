@@ -105,7 +105,6 @@ const curveStep = curveWidth / 11
 const curveMiddle = 61.44
 const curveMax = 61.84
 
-
 export default function MetalContent() {
   const classes = useStyles()
   const [pump, setPump] = useState('')

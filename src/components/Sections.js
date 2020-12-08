@@ -71,9 +71,9 @@ function createStyle(data) {
     for (let j = 0; j < 3; j++) {
       if (j === 0) {
         if (+style[j] === 1) {
-          obj.backgroundColor = '#e0effb' // Голубой
+          obj.backgroundColor = 'rgba(165,210,247,0.3' // Голубой #a5d2f7
         } else if (+style[j] === 2) {
-          obj.backgroundColor = '#f8e4e6' // Розовый
+          obj.backgroundColor = 'rgba(249,184,190,0.3' // Розовый #f9b8be
         }
       }
       if (j === 1) {
@@ -137,7 +137,7 @@ const rows2 = [
   createData2('рекомендация', '', '', '', 'Нет', '', '', 'Нет', '', '', 'Нет', '', ''),
 ]
 
-export default function Sections() {
+export default function Sections({showHistory}) {
   const classes = useStyles()
   const [pump, setPump] = useState('')
 
@@ -251,7 +251,7 @@ export default function Sections() {
               <TableCell align="left" className={classes.fontBlack}>Рекомендация обновлена</TableCell>
               <TableCell></TableCell>
               <TableCell align="right" className={classes.fontBlack}>Посмотреть историю</TableCell>
-              <TableCell className={[classes.smallCell, classes.fontBlack].join(' ')} align="center"><button className={classes.historyButton}>&gt;</button></TableCell>
+              <TableCell className={[classes.smallCell, classes.fontBlack].join(' ')} align="center"><button className={classes.historyButton} onClick={showHistory}>&gt;</button></TableCell>
             </TableRow>
           </TableBody>
         </Table>

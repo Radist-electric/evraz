@@ -6,13 +6,13 @@ import OreChar from './OreChar'
 import Ore from './Ore'
 import Notification from './Notification'
 
-export default function Recommendation() {
+export default function Recommendation({showHistory}) {
 
   return (
     <Container maxWidth="lg">
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Sections />
+          <Sections showHistory={showHistory}/>
         </Grid>
         <Grid item xs={6}>
           <MetalContent />
@@ -22,7 +22,7 @@ export default function Recommendation() {
         </Grid>
         <Grid item xs={3}>
           <Ore />
-          <Notification />
+          <Notification/>
         </Grid>
       </Grid>
     </Container>

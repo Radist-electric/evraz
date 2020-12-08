@@ -69,7 +69,11 @@ export default function TabsMenu() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
-  };
+  }
+
+  const showHistory = () => {
+    setValue(1)
+  }
 
   return (
     <>
@@ -96,7 +100,7 @@ export default function TabsMenu() {
         </Container>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Recommendation/>
+        <Recommendation showHistory={showHistory}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <History/>
